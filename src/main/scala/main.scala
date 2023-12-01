@@ -42,5 +42,4 @@ def day1_2(input: Seq[String]): Seq[String] = {
 /**
  * One thing that may not be visible in the test data is that "...eightwo..." should result in [.. 8, 2..]
  *
- * I originally wrote mine using little parser that consumed the "eight" in its entirety and then moved on to the rest of the string following it ("wo...") which obviously caused me to miss the 2. There were a couple of lines ending like that in my puzzle input.
  */
