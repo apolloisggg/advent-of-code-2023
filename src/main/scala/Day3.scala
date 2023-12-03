@@ -3,12 +3,11 @@ object Day3 {
   def main(args: Array[String]): Unit = {
     val input = Util.readLines("day3.txt")
     println(day3_1(input)) // 544664
-    // TODO: go back here
     println(day3_2(input)) // 84495585
 
   }
 
-  val numberR = "\\d{2,}".r.unanchored
+  val numberR = "\\d{1,}".r.unanchored
 
   def day3_1(input: Seq[String]): Int = {
 
