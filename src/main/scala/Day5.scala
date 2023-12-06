@@ -5,13 +5,10 @@ import java.io.*
 object Day5 {
   def main(args: Array[String]): Unit = {
     val input = Source.fromResource("day5.txt").getLines.mkString(" ")
-    // println(day5_1(input))
+    println(day5_1(input))
 
     println(day5_2(input))
 
-//    val res = Source.fromResource("cache.txt").getLines.toList.map(_.toLong).min
-//
-//    println(res)
   }
 
   case class Range(destinationStart: Long, sourceStart: Long, length: Long)
@@ -62,7 +59,7 @@ object Day5 {
       ))
 
     almanac.seeds.sliding(2, 2).foreach { seedRange =>
-      println(s"pair ${seedRange.head} ${seedRange.last}")
+
       val seeds = seedRange.head until (seedRange.head + seedRange.last)
 
       val res = seeds.map { seed =>
