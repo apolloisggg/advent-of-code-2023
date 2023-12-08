@@ -6,9 +6,7 @@ object Day5 {
   def main(args: Array[String]): Unit = {
     val input = Source.fromResource("day5.txt").getLines.mkString(" ")
     println(day5_1(input))
-
-    println(day5_2(input))
-
+    // println(day5_2(input))
   }
 
   case class Range(destinationStart: Long, sourceStart: Long, length: Long)
@@ -51,29 +49,20 @@ object Day5 {
   }
   
   // TODO: doesnt work OOM error
-  def day5_2(input: String): Long = {
-    val almanac = parse(input)
-
-    val writer = BufferedWriter(PrintWriter(
-        File("src\\main\\resources\\cache.txt")
-      ))
-
-    almanac.seeds.sliding(2, 2).foreach { seedRange =>
-
-      val seeds = seedRange.head until (seedRange.head + seedRange.last)
-
-      val res = seeds.map { seed =>
-        (1 to 7).foldLeft(seed) { (current, step) =>
-          almanac.step(step).find(r => current >= r.sourceStart && current <= r.sourceStart + r.length).fold(current)(r => current - r.sourceStart + r.destinationStart)
-        }
-      }.min
-
-      writer.append(res.toString + "\n")
-    }
-    writer.close()
-
-    Source.fromResource("cache.txt").getLines.toList.map(_.toLong).min
-  }
+//  def day5_2(input: String): Long = {
+//    val almanac = parse(input)
+//
+//    almanac.seeds.sliding(2, 2).foreach { seedRange =>
+//
+//      val seeds = seedRange.head until (seedRange.head + seedRange.last)
+//
+//      val res = seeds.map { seed =>
+//        (1 to 7).foldLeft(seed) { (current, step) =>
+//          almanac.step(step).find(r => current >= r.sourceStart && current <= r.sourceStart + r.length).fold(current)(r => current - r.sourceStart + r.destinationStart)
+//        }
+//      }.min
+//    }
+//  }
 
   implicit class StringExt(val str: String) {
     def splitBySpaces: List[Long] = str.split("\\s+").map(_.toLong).toList
