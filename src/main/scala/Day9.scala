@@ -1,14 +1,14 @@
 object Day9 {
   def main(args: Array[String]): Unit = {
     val input = Util.readLines("day9.txt")
-    println(day9_1(input))
+    println(day9(input))
   }
 
   def parse(input: List[String]): List[List[Int]] = {
     input.map(i => i.split(" ").map(_.toInt).toList)
   }
 
-  def day9_1(input: List[String]): Int = {
+  def day9(input: List[String]): Int = {
     val data = parse(input)
 
     def loop(matrix: List[List[Int]], current: List[Int]): Int = {
