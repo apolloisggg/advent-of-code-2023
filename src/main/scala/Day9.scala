@@ -1,3 +1,5 @@
+import scala.annotation.tailrec
+
 object Day9 {
   def main(args: Array[String]): Unit = {
     val input = Util.readLines("day9.txt")
@@ -11,6 +13,7 @@ object Day9 {
   def day9(input: List[String]): Int = {
     val data = parse(input)
 
+    @tailrec
     def loop(matrix: List[List[Int]], current: List[Int]): Int = {
       if (current.forall(_ == 0)) matrix.foldLeft(0) {
         (cur, row) =>

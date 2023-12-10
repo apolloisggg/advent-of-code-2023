@@ -19,7 +19,7 @@ object Day8 {
   }
 
   // least common multiply
-  // chinese
+  // chinese remainder theorem
   def day8_1(input: List[String]): Int = {
     val lf = input.head
     val nodes = parse(input)
