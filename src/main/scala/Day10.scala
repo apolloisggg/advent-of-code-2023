@@ -20,8 +20,9 @@ object Day10 {
   enum Direction:
     case UP, DOWN, LEFT, RIGHT
 
-
   def parse(input: List[String]): List[List[Char]] = input.map(_.toList)
+
+  var visitedPerRow: Map[Int, List[Pos]] = Map.empty
 
   def day10_1(input: List[String]): Int = {
     val matrix = parse(input)
@@ -59,5 +60,9 @@ object Day10 {
 
     loop(s, 0, direction) / 2
   }
+
+  // mark visited points ???
+  // fill flood algo ???
+  def day10_2 = ???
 
 }
