@@ -20,11 +20,14 @@ object Day13 {
 
   def horizontalLine(list: List[String]): Int = {
     list
+    ???
   }
 
   def part1(input: List[String]): Int = {
     parse(input).map { image =>
 
     }
+    
+    0
   }
 }
