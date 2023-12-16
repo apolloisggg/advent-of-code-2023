@@ -1,3 +1,5 @@
+import Direction.*
+
 object Day10 {
   def main(args: Array[String]): Unit = {
     val input = Util.readLines("day10.txt")
@@ -16,10 +18,7 @@ object Day10 {
       case Direction.LEFT => this.left
       case Direction.RIGHT => this.right
   }
-
-  enum Direction:
-    case UP, DOWN, LEFT, RIGHT
-
+  
   def parse(input: List[String]): List[List[Char]] = input.map(_.toList)
 
   var visitedPerRow: Map[Int, List[Pos]] = Map.empty
