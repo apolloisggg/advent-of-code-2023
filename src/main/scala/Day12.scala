@@ -1,3 +1,5 @@
+import CharExt.*
+
 object Day12 {
   def main(args: Array[String]): Unit = {
     val input = Util.readLines("day12.txt")
@@ -17,9 +19,11 @@ object Day12 {
 
     val groupR = "[?|#]+".r.unanchored
     records.foreach { r =>
-      groupR.findAllMatchIn(r.value).foreach(x => println(x.matched))
+      val matched = groupR.findAllMatchIn(r.value).map(x => x.matched).toList
+      println(matched)
+      println(matched.flatten)
+      println(r.groups)
     }
-
     0
   }
 }

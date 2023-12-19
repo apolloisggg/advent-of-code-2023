@@ -55,9 +55,7 @@ object Day11 {
     )
 
     val galaxies = m2.filter(cell => cell.value.isHash)
-
-    galaxies.foreach(println)
-
+    
     def findDistance(galaxies: List[Cell[Char]], distance: BigInt): BigInt = galaxies match
       case last :: Nil => distance
       case g :: rest =>
