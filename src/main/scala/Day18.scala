@@ -51,4 +51,7 @@ object Day18 {
 
     findLavaArea(parse(input))
   }
+
+  // TODO: Flood Fill Algorithm ???
+
 }
