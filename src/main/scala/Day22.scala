@@ -7,6 +7,8 @@ object Day22 {
   }
 
   case class Brick(x: List[Int], y: List[Int], z: List[Int])
+  // pos in Cube is Brick`s for each (x, y, Z) equals x + 10 * y + Z where Z is a new Z
+  case class Cube(brick: Int, pos: Int)
 
   def parse(input: List[String]): List[Brick] = {
     input.map {
