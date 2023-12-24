@@ -26,7 +26,7 @@ object Day22 {
     val bricks = parse(input).sortBy(_.z.min)
 
     @tailrec
-    def loop(bricks: List[Brick], processedBricks: List[Int], acc: Int): Int = bricks match
+    def loop(bricks: List[Brick], processedBricks: List[Cube], acc: Int, id: Int): Int = bricks match
       case Nil =>
         println(processedBricks)
         acc
@@ -37,16 +37,25 @@ object Day22 {
         } yield 10 * y + x
 
         val xyLayer = processedBricks
-          .filter(brick => xy.contains(brick % 100))
+          .filter(brick => xy.contains(brick.pos % 100))
 
-        xyLayer match
-          case Nil => loop(tail, xy.map(_ + 100) ::: processedBricks, acc)
-          case _ =>
+        val zLayer = xyLayer.maxByOption(_.pos)
 
-            val zLayer = xyLayer.max / 100 + brick.z.length
+        zLayer match
+          case None => loop(tail, xy.map(c => Cube(id, c + 100)) ::: processedBricks, acc, id + 1)
+          case Some(level) =>
 
-            loop(tail, xy.map(_ + zLayer * 100) ::: processedBricks, acc)
+            val z = level.pos / 100 + brick.z.length
 
-    loop(bricks, List.empty, 0)
+            val replaceable = xyLayer.filter(_.pos >= level.pos / 100 * 100).map(_.brick).distinct match
+              case head :: Nil => acc
+              case x => x.length + acc
+
+            println(xyLayer.filter(_.pos >= level.pos / 100 * 100))
+            println(xyLayer.filter(_.pos >= level.pos / 100 * 100).map(_.brick).distinct)
+
+            loop(tail, xy.map(c => Cube(id, c + z * 100)) ::: processedBricks, replaceable, id + 1)
+
+    loop(bricks, List.empty, 0, 1)
   }
 }
